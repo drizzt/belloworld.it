@@ -26,6 +26,18 @@
 <div id="particles-js">
   <div class="header">
       <h1>
+        <video id="bello-video" autoplay controls muted preload="auto" data-setup="{}">
+          <source src="{{ config.base_url ~ "/bello.mp4" }}" type="video/mp4">
+        </video>
+        <script>
+
+          document.getElementById('bello-video').addEventListener('ended',myHandler,false);
+          function myHandler(e) {
+            setTimeout(function(){
+              document.getElementById('bello-video').play();
+            }, 2000);
+          }
+        </script>
         <span class="site-title">{{ config.extra.username }}</span>
         <span class="site-description">{{ config.extra.user_title | linebreaksbr | safe }}</span>
       </h1>
