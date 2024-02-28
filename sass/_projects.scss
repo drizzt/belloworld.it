@@ -1,4 +1,4 @@
-#projects, #services {
+#projects, #services, #talks {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -44,6 +44,7 @@
   }
 }
 .images-right {
+  position: relative;
   @media only screen and (min-width: $cut) {
     float: right;
     width: 48%;
@@ -56,6 +57,7 @@
 }
 
 .images-left {
+  position: relative;
   @media only screen and (min-width: $cut) {
     float: left;
     width: 48%;
@@ -65,6 +67,17 @@
       float: left;
     }
   }
+}
+
+.hover-image {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.images-left:hover .hover-image, .images-right:hover .hover-image {
+  display: block;
 }
 
 .project-link {

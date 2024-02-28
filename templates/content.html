@@ -44,3 +44,21 @@
   </div>
 </div>
 {% endmacro services %}
+
+{% macro talks() %}
+<div class="user-details">
+  <h1>Talks</h1>
+</div>
+<div class="user-projects">
+  <div class="images-right">
+    <img src="{{ config.base_url ~ "/img/fosdem2024-opentimestamps.webp" }}">
+    <img class="hover-image" src="{{ config.base_url ~ "/img/fosdem2024-opentimestamps_hover.webp" }}">
+  </div>
+  <div class="contents">
+    <h3>Timestamping with opentimestamps</h3>
+    <h4>FOSDEM 2024</h4>
+    <p>This talk was be about timestamping, blockchain, opentimestamps and proofmode.</p>
+    <a class="project-link" href="https://fosdem.org/2024/schedule/event/fosdem-2024-3661-timestamping-with-opentimestamps/">Check it out</a>
+  </div>
+</div>
+{% endmacro talks %}
