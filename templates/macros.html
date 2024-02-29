@@ -14,7 +14,11 @@
 
 {% macro footer() %}
 <footer class="footer">
+    {% if config.extra.email %}
+    <p>&copy; <a href="mailto:{{ config.extra.email | safe }}">{{ config.extra.username }}</a></p>
+    {% else %}
     <p>&copy; {{ config.extra.username }}</p>
+    {% endif %}
     <p>Ported to Zola with <span class="love">❤</span> by <a href="https://github.com/svavs">Silvano Sallese</a> (original by <a href="https://github.com/nrandecker">Nathan Randecker</a>)</p>
 </footer>
 <script src="//cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
@@ -38,7 +42,7 @@
             }, 2000);
           }
         </script>
-        <span class="site-title">{{ config.extra.username }}</span>
+        <span class="site-title">{{ config.title }}</span>
         <span class="site-description">{{ config.extra.user_title | linebreaksbr | safe }}</span>
       </h1>
       <div class="header-links">
