@@ -122,5 +122,8 @@
 }
 
 video {
-    max-width: 40%;
+  max-width: 100%;
+  @media only screen and (min-width: $cut) {
+    max-width: 48%;
+  }
 }
