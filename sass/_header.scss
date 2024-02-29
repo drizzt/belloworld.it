@@ -25,10 +25,12 @@
   transform: translate(-50%, -50%);
   white-space: nowrap;
   .site-title {
+    @extend .vt323-regular;
     font-size: 50px;
     display: block;
     line-height: 1;
     color: #FFF;
+    font-variant: small-caps;
     @media only screen and (min-width:$cut){
       margin: 0;
       font-size: 100px;
