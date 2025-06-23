@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Bello World</title>
+  <meta name="description" content="Bello World Projects">
+
+  <link rel="stylesheet" href="https://belloworld.it/main.css">
+  <link rel="me" href="https://livellosegreto.it/@timothy">
+</head>
+
+
+  <body>
+
+      
+<div id="particles-js">
+  <div class="header">
+      <h1>
+        <video id="bello-video" autoplay controls muted preload="auto" data-setup="{}">
+          <source src="https://belloworld.it/bello.mp4" type="video/mp4">
+        </video>
+        <script>
+
+          document.getElementById('bello-video').addEventListener('ended',myHandler,false);
+          function myHandler(e) {
+            setTimeout(function(){
+              document.getElementById('bello-video').play();
+            }, 2000);
+          }
+        </script>
+        <span class="site-title">Bello World</span>
+        <span class="site-description"></span>
+      </h1>
+      <div class="header-links">
+        <a class="link" href="#about" data-scroll>About Me</a>
+        <a class="link" href="#projects" data-scroll>Projects</a>
+        <a class="link" href="#services" data-scroll>Services</a>
+        <a class="link" href="#talks" data-scroll>Talks</a>
+      </div>
+  </div>
+  <a class="down" href="#about" data-scroll><i class="icon fa fa-chevron-down" aria-hidden="true"></i></a>
+</div>
+
+
+      <section id="about">
+        
+<div class="user-details">
+  <h1>About Me</h1>
+  <p>Bello World is a one-man project by <a href="https://redaelli.eu/">Timothy Redaelli</a>.</p>
+</div>
+
+      </section>
+
+      <section id="projects">
+        
+<div class="user-details">
+  <h1>Projects</h1>
+</div>
+<div class="user-projects">
+  <div class="images-right">
+    <a href="https://github.com/drizzt/Mercurygram">
+      <img width="200" src="https://belloworld.it/img/mercurygram.svg">
+    </a>
+  </div>
+  <div class="contents">
+    <h3>Mercurygram</h3>
+    <p>An unofficial fork of the <a href="https://github.com/Telegram-FOSS-Team/Telegram-FOSS">FOSS-friendly fork</a> of <a href="https://github.com/DrKLO/Telegram">Telegram App for Android</a>.</p>
+    <a class="project-link" href="https://github.com/drizzt/Mercurygram">Check it out</a>
+  </div>
+</div>
+
+      </section>
+
+      <section id="services">
+        
+<div class="user-details">
+  <h1>Hosted Services</h1>
+</div>
+<div class="user-projects">
+  <div class="images-right">
+    <a href="https://ansiacheck.belloworld.it/">
+      <img width="200" src="https://belloworld.it/img/ansia-check.svg">
+    </a>
+  </div>
+  <div class="contents">
+    <h3>AnsiaCheck</h3>
+    <p>ANSIACheck is similar to ANSACheck but it works and it uses opentimestamps.</p>
+    <a class="project-link" href="https://ansiacheck.belloworld.it/">Check it out</a>
+  </div>
+</div>
+<div class="user-projects">
+  <div class="images-left">
+    <a href="https://ntfy.belloworld.it/">
+      <img width="200" src="https://belloworld.it/img/ntfy-outline.svg">
+    </a>
+  </div>
+  <div class="contents-right">
+    <h3>ntfy</h3>
+    <p>A simple HTTP-based pub-sub notification service. It allows you to send notifications to your phone or desktop via scripts from any computer, and/or using a REST API.</p>
+    <a class="project-link" href="https://ntfy.belloworld.it/">Check it out</a>
+  </div>
+</div>
+<div class="user-projects">
+  <div class="images-right">
+    <a href="https://redlib.belloworld.it/">
+      <img width="200" src="https://belloworld.it/img/redlib.webp">
+    </a>
+  </div>
+  <div class="contents">
+    <h3>Redlib</h3>
+    <p>An alternative private front-end to Reddit, with its origins in <a href="https://github.com/libreddit/libreddit">Libreddit</a>.</p>
+    <a class="project-link" href="https://redlib.belloworld.it/">Check it out</a>
+  </div>
+</div>
+<div class="user-projects">
+  <div class="images-left">
+    <a href="https://mollysocket.belloworld.it/">
+      <img width="200" src="https://belloworld.it/img/mollysocket.webp">
+    </a>
+  </div>
+  <div class="contents-right">
+    <h3>MollySocket</h3>
+    <p>MollySocket allows getting signal notifications via UnifiedPush. It works like a linked device, which doesn't have an encryption key, connected to the Signal server.<br>Everytime it receives an encrypted event, it notifies your mobile via UnifiedPush.</a>.</p>
+    <p>To use that, you need to install <a href="https://molly.im/">Molly</a>, then in <b>Options</b> -&gt; <b>Notifications</b> you have to set <b>UnifiedPush</b> as <b>Delivery Method</b> and
+    <code>https://mollysocket.belloworld.it/</code> as <b>Server URL</b>.</p>
+    <a class="project-link" href="https://mollysocket.belloworld.it/">Check it out</a>
+  </div>
+</div>
+<div class="user-projects">
+  <div class="images-right">
+    <a href="tg://proxy?server=144.24.179.104&port=8443&secret=7om39BDFPEAoZN1iwuQ8NPNvcmFjbGUuY29t">
+      <img width="200" src="https://belloworld.it/img/mtproxy.webp">
+    </a>
+  </div>
+  <div class="contents">
+    <h3>MTProxy</h3>
+    <p>MTProto Proxy for Telegram</p>
+    <a class="project-link" href="tg://proxy?server=144.24.179.104&port=8443&secret=7om39BDFPEAoZN1iwuQ8NPNvcmFjbGUuY29t">Check it out</a>
+  </div>
+</div>
+
+
+      </section>
+
+      <section id="talks">
+        
+<div class="user-details">
+  <h1>Talks</h1>
+</div>
+<div class="user-projects">
+  <div class="images-right">
+    <a href="https://video.linux.it/w/5WbbgNfYfQUdvVgSmRPQoE">
+      <img src="https://belloworld.it/img/linuxdaymilano2024-ostree.webp">
+    </a>
+  </div>
+  <div class="contents">
+    <h3>OSTree for fun and profit</h3>
+    <h4>Linux Day Milano 2024</h4>
+    <p>Spiegazione di OStree con due demo:</p>
+    <p>La prima riguardante i comandi di base di ostree e rpm-ostree e switch da Fedora Kinoite a Fedora Silverblue.</p>
+    <p>La seconda riguardante toolbox e compilazione moduli del kernel (v4l2loopback).</p>
+    <a class="project-link" href="https://video.linux.it/w/5WbbgNfYfQUdvVgSmRPQoE">Check it out</a>
+  </div>
+</div>
+<div class="user-projects">
+  <div class="images-left">
+    <a href="https://github.com/unixMiB/events/blob/master/Linux%20Day%20Milano%202022/Timestamping%20con%20opentimestamps%20-%20Timothy%20Redaelli%20-%20FSFE.pdf">
+      <img src="https://belloworld.it/img/linuxdaymilano2022-opentimestamps.webp">
+    </a>
+  </div>
+  <div class="contents-right">
+    <h3>Timestamping con opentimestamps</h3>
+    <h4>Linux Day Milano 2022</h4>
+    <p>Spiegazione generale di cos'è il timestamping, come si effettua con opentimestamp e perché è utile.</p>
+    <a class="project-link" href="https://github.com/unixMiB/events/blob/master/Linux%20Day%20Milano%202022/Timestamping%20con%20opentimestamps%20-%20Timothy%20Redaelli%20-%20FSFE.pdf">Check it out</a>
+  </div>
+</div>
+<div class="user-projects">
+  <div class="images-right">
+    <a href="https://fosdem.org/2024/schedule/event/fosdem-2024-3661-timestamping-with-opentimestamps/">
+      <img src="https://belloworld.it/img/fosdem2024-opentimestamps.webp">
+      <img class="hover-image" src="https://belloworld.it/img/fosdem2024-opentimestamps_hover.webp">
+    </a>
+  </div>
+  <div class="contents">
+    <h3>Timestamping with opentimestamps</h3>
+    <h4>FOSDEM 2024</h4>
+    <p>This talk was about timestamping, blockchain, opentimestamps and proofmode.</p>
+    <a class="project-link" href="https://fosdem.org/2024/schedule/event/fosdem-2024-3661-timestamping-with-opentimestamps/">Check it out</a>
+  </div>
+</div>
+
+      </section>
+
+      
+      <p></p>
+      
+
+
+      
+<footer class="footer">
+    
+    <p>&copy; <a href="mailto:&#098;&#101;&#108;&#108;&#111;&#064;&#098;&#101;&#108;&#108;&#111;&#119;&#111;&#114;&#108;&#100;&#046;&#105;&#116;">Timothy Redaelli</a></p>
+    
+    <p>Ported to Zola with <span class="love">❤</span> by <a href="https://github.com/svavs">Silvano Sallese</a> (original by <a href="https://github.com/nrandecker">Nathan Randecker</a>)</p>
+</footer>
+<script src="//cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script src="https://belloworld.it/js/sweet-scroll.min.js"></script>
+<script src="https://belloworld.it/js/main.js"></script>
+
+      
+<!-- Google Analytics -->
+
+
+
+  </body>
