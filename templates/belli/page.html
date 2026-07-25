@@ -1,0 +1,19 @@
+{% extends "belli/base.html" %}
+
+{% block title %}{{ page.title }}{% endblock title %}
+{% block description %}{{ page.description }}{% endblock description %}
+
+{% block content %}
+<article>
+  <h1>{{ page.title }}</h1>
+
+  {# No date on the page: these pieces do not go stale, and a visible year makes a
+     reader discount something that still holds word for word. The date is in the
+     feed and in article:published_time for anything that needs it.
+
+     page.extra.slides is data for a future image generator and is not rendered here. #}
+  {{ page.content | safe }}
+</article>
+
+<p class="belli-back"><a href="{{ get_url(path='@/belli/_index.md') }}">Torna all'indice</a></p>
+{% endblock content %}

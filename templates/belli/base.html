@@ -1,0 +1,75 @@
+{# Standalone base for the /belli/ section. Deliberately does not import macros.html:
+   those macros pull in particles.js, sweet-scroll, main.js and an autoplaying video,
+   and this section must ship no JavaScript. #}
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{% block title %}Bello, World{% endblock title %}</title>
+  {# index.html and page.html both fill this in. Empty by default on purpose:
+     a template that forgets it should show up as a blank tag, not as a stale
+     copy of a line that lives in _index.md. #}
+  <meta name="description" content="{% block description %}{% endblock description %}">
+
+  {# These pieces travel by WhatsApp and Telegram, so the preview is not decoration.
+     The image is a fixed fallback for now; once the carousel generator exists, the
+     first slide of each piece becomes its own og:image. #}
+  <meta property="og:site_name" content="Bello, World">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:image" content="{{ get_url(path='img/belli-og.png') }}">
+  {# Telegram crops the preview to a square thumbnail unless the dimensions are
+     declared, so the 1200x630 has to be spelled out here. #}
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  {%- if page %}
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="{{ page.permalink | safe }}">
+  <meta property="og:title" content="{{ page.title }}">
+  <meta property="og:description" content="{{ page.description }}">
+  {# The date stays out of the visible page on purpose, but a machine reading the
+     piece should still know when it was published. #}
+  <meta property="article:published_time" content="{{ page.date }}">
+  {%- else %}
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ section.permalink | safe }}">
+  <meta property="og:title" content="{{ section.title }}">
+  <meta property="og:description" content="{{ section.description }}">
+  {%- endif %}
+
+  {# Two faces preloaded: the roman draws every paragraph, the condensed draws the
+     headings above the fold. The italic and the semibold can wait. #}
+  <link rel="preload" href="{{ get_url(path='fonts/ibm-plex-sans-latin-400-normal.woff2') }}" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{ get_url(path='fonts/ibm-plex-sans-condensed-latin-700-normal.woff2') }}" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="{{ get_url(path='belli.css') }}">
+  <link rel="alternate" type="application/atom+xml" title="Bello, World" href="{{ get_url(path='belli/atom.xml') }}">
+</head>
+
+<body>
+
+  {# Only an article carries the wordmark, as the way back. On the index the big
+     title says the same words right below it, so a masthead there is noise. #}
+  {%- if page %}
+  <header class="site-header">
+    <a href="{{ get_url(path='@/belli/_index.md') }}">Bello, World</a>
+  </header>
+  {%- endif %}
+
+  {# Everything in this block is set on the green field, above the sheet. Only the
+     index fills it; an article page leaves it empty and starts straight at the sheet. #}
+  {% block above %}{% endblock above %}
+
+  <main>
+    {% block content %}{% endblock content %}
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <a href="mailto:{{ config.extra.email | safe }}">{{ config.extra.username }}</a></p>
+    <p><a href="{{ get_url(path='belli/atom.xml') }}">Feed Atom</a> &middot; <a href="{{ get_url(path='/') }}">belloworld.it</a></p>
+  </footer>
+
+</body>
+
+</html>

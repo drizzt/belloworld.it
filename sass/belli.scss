@@ -1,0 +1,307 @@
+// Stylesheet for the "Bello, World" section only (/belli/).
+// Compiled by Zola to /belli.css. The rest of the site keeps using main.css.
+//
+// The look is carta su verde: a flat field of Olivetti petrol green with a
+// sheet of paper laid on top of it, and a printer's vermilion for the accent.
+// It deliberately shares nothing with the homepage. The homepage speaks to
+// people who take computers apart; this section speaks to people who use them.
+
+$unicode-latin: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+  U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212,
+  U+2215, U+FEFF, U+FFFD;
+
+/* ibm-plex-sans-latin-400-normal */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/fonts/ibm-plex-sans-latin-400-normal.woff2) format('woff2');
+  unicode-range: $unicode-latin;
+}
+
+/* ibm-plex-sans-latin-400-italic */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/fonts/ibm-plex-sans-latin-400-italic.woff2) format('woff2');
+  unicode-range: $unicode-latin;
+}
+
+/* ibm-plex-sans-latin-600-normal */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(/fonts/ibm-plex-sans-latin-600-normal.woff2) format('woff2');
+  unicode-range: $unicode-latin;
+}
+
+/* ibm-plex-sans-condensed-latin-700-normal: display only, never body text */
+@font-face {
+  font-family: 'IBM Plex Sans Condensed';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(/fonts/ibm-plex-sans-condensed-latin-700-normal.woff2) format('woff2');
+  unicode-range: $unicode-latin;
+}
+
+// Every colour and size lives here and nowhere else in this file.
+:root {
+  --verde: #1f4a45;           // the field: flat petrol green, the page ground
+  --carta: #f7f5f0;           // the sheet, and any text set on the green
+  --carta-tenue: #b9c6c0;     // intro prose and footer on the green
+  --inchiostro: #16211f;      // text on the sheet, black with a green cast
+  --inchiostro-tenue: #5a6663; // descriptions and asides on the sheet
+  --vermiglio: #c42b14;       // links, and the bar along the top edge of the sheet
+  --filo: #d9d5cc;            // hairlines on the sheet
+
+  // Contrast, measured: inchiostro on carta 16:1, vermiglio on carta 5.0:1,
+  // carta on verde 8.9:1, carta-tenue on verde 5.6:1.
+  // Vermilion on green is 1.3:1, so it is never used as text on the field.
+  // It appears there only as a solid bar, where nothing has to be read.
+
+  --belli-font: 'IBM Plex Sans', system-ui, sans-serif;
+  --belli-display: 'IBM Plex Sans Condensed', 'IBM Plex Sans', system-ui, sans-serif;
+  --belli-size: 1.125rem;
+  --belli-lead: 1.7;
+  --belli-measure: 34rem;
+  --belli-gap: 1.5rem;
+
+  // The title is sized to fill the sheet's column on a wide screen: it is the
+  // masthead of the section, not a heading above it.
+  --belli-h0: clamp(2.5rem, 9vw, 6rem);
+  --belli-manifesto: clamp(1.25rem, 3.5vw, 1.75rem);
+  --belli-h1: clamp(1.9rem, 4.5vw, 2.6rem);
+  --belli-h2: 1.5rem;
+  --belli-small: 0.875rem;
+
+  // The sheet is the reading measure plus its own margins. Sizes are in one
+  // place so the sheet and the blocks on the green stay on the same axis.
+  --belli-sheet-pad: clamp(1.5rem, 6vw, 4rem);
+  --belli-sheet-width: calc(var(--belli-measure) + 2 * var(--belli-sheet-pad));
+}
+
+body {
+  margin: 0;
+  background-color: var(--verde);
+  color: var(--carta);
+  font-family: var(--belli-font);
+  font-size: var(--belli-size);
+  line-height: var(--belli-lead);
+  text-rendering: optimizeLegibility;
+}
+
+// The header, the manifesto block and the footer sit directly on the green and
+// share the sheet's axis. The sheet itself carries its own width.
+.site-header,
+.belli-above,
+.site-footer {
+  max-width: var(--belli-sheet-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--belli-sheet-pad);
+  padding-right: var(--belli-sheet-pad);
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+}
+
+// Keyboard focus has to stay visible on both grounds, so it is drawn in the
+// colour of the text it belongs to rather than a fixed one.
+a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--belli-display);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+p {
+  margin: 0 0 1.25em;
+}
+
+// ---------------------------------------------------------------- the field
+
+.site-header {
+  padding-top: var(--belli-gap);
+  padding-bottom: var(--belli-gap);
+  font-family: var(--belli-display);
+  font-weight: 700;
+  font-size: var(--belli-small);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.site-header a {
+  color: var(--carta-tenue);
+  text-decoration: none;
+}
+
+.site-header a:hover,
+.site-header a:focus {
+  color: var(--carta);
+}
+
+// The manifesto block: only the index fills it, an article leaves it empty.
+// The gap down to the sheet is set once, by the sheet itself.
+.belli-above {
+  padding-top: clamp(3rem, 8vw, 5rem);
+  padding-bottom: 0;
+}
+
+// Two lines at every width. Left free, the title flips between one line and two
+// as the viewport changes, which reads as an accident rather than a lockup.
+// The measure is narrower than the title on purpose: it only picks the break.
+.belli-h0 {
+  margin: 0;
+  max-width: 8ch;
+  font-size: var(--belli-h0);
+  line-height: 0.95;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+}
+
+// The section description, set as the statement the whole section makes.
+.belli-manifesto {
+  margin: 1.25rem 0 0;
+  max-width: 26ch;
+  font-family: var(--belli-display);
+  font-weight: 700;
+  font-size: var(--belli-manifesto);
+  line-height: 1.2;
+}
+
+.belli-intro {
+  margin-top: 2rem;
+  max-width: var(--belli-measure);
+  color: var(--carta-tenue);
+  font-size: var(--belli-small);
+}
+
+.belli-intro p:last-child {
+  margin-bottom: 0;
+}
+
+.site-footer {
+  padding-top: calc(var(--belli-gap) * 1.75);
+  padding-bottom: calc(var(--belli-gap) * 2.5);
+  color: var(--carta-tenue);
+  font-size: var(--belli-small);
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.site-footer a:hover,
+.site-footer a:focus {
+  color: var(--carta);
+}
+
+// ---------------------------------------------------------------- the sheet
+
+// A printed sheet laid on the field, not a card: square corners, no shadow.
+// The top margin is the only gap between the field and the sheet, on both pages.
+main {
+  max-width: var(--belli-sheet-width);
+  margin: clamp(2.5rem, 7vw, 4rem) auto 0;
+  padding: var(--belli-sheet-pad);
+  box-sizing: border-box;
+  border-top: 5px solid var(--vermiglio);
+  background-color: var(--carta);
+  color: var(--inchiostro);
+}
+
+main a {
+  color: var(--vermiglio);
+}
+
+main a:hover,
+main a:focus {
+  text-decoration: none;
+}
+
+main h1 {
+  font-size: var(--belli-h1);
+  letter-spacing: -0.01em;
+  // Nothing sits between the title of a piece and its first paragraph, so the
+  // title carries the gap itself.
+  margin: 0 0 2rem;
+}
+
+main h2 {
+  font-size: var(--belli-h2);
+  margin: 2.5rem 0 0.5rem;
+}
+
+blockquote {
+  margin: 1.5em 0;
+  padding-left: 1em;
+  border-left: 3px solid var(--filo);
+  color: var(--inchiostro-tenue);
+}
+
+hr {
+  height: 0;
+  margin: 2.5rem 0;
+  border: 0;
+  border-top: 1px solid var(--filo);
+}
+
+// Index: title + description per piece, no bullets, no numbers. They are not
+// a sequence, so nothing here implies an order beyond newest first.
+.belli-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.belli-list > li + li {
+  margin-top: 2.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--filo);
+}
+
+.belli-list h2 {
+  margin: 0 0 0.35rem;
+}
+
+.belli-list a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.belli-list a:hover,
+.belli-list a:focus {
+  color: var(--vermiglio);
+}
+
+.belli-list p {
+  margin-bottom: 0;
+  color: var(--inchiostro-tenue);
+}
+
+.belli-back {
+  margin: 3rem 0 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--filo);
+  font-size: var(--belli-small);
+}
+
+// Nothing on either page moves, and that is a decision rather than an omission.
+// The title and the statement used to fade up on load. Every renderer that
+// screenshots a page instead of watching it - headless Chrome, so link
+// previewers and auditing tools - caught them mid-fade and produced a washed
+// out title. A page whose whole job is to be read owes nobody 400ms of motion.

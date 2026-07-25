@@ -31,3 +31,11 @@
   text-align: center;
   margin: 5px auto;
 }
+
+// One-line pointer to the Italian section at the bottom of the homepage.
+// Own class on purpose: it is unrelated to .user-details and must stay
+// free to move when the homepage priority is reworked.
+.belli-link {
+  text-align: center;
+  margin: 40px auto 5px;
+}

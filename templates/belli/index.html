@@ -1,0 +1,28 @@
+{% extends "belli/base.html" %}
+
+{% block title %}{{ section.title }}{% endblock title %}
+{% block description %}{{ section.description }}{% endblock description %}
+
+{# The title and the statement it makes live on the green field, and the sheet
+   below carries the pieces themselves. #}
+{% block above %}
+<div class="belli-above">
+  <h1 class="belli-h0">{{ section.title }}</h1>
+  <p class="belli-manifesto">{{ section.extra.manifesto }}</p>
+
+  {# The intro prose, i.e. the body of _index.md. #}
+  <div class="belli-intro">{{ section.content | safe }}</div>
+</div>
+{% endblock above %}
+
+{% block content %}
+{# sort_by = "date" in _index.md already gives newest first. #}
+<ul class="belli-list">
+  {% for page in section.pages %}
+  <li>
+    <h2><a href="{{ page.permalink | safe }}">{{ page.title }}</a></h2>
+    <p>{{ page.description }}</p>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock content %}
