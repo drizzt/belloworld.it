@@ -1,65 +1,61 @@
-# Port for Zola of the Particle Jekyll theme
+# belloworld.it
 
-![](./screenshot.jpg)
+Source of <https://belloworld.it>. Built with [Zola](https://www.getzola.org/).
+No toolchain beyond Zola itself: it compiles the Sass, and everything else is a
+template.
 
-This is a simple and minimalist template for Zola designed for developers that want to show of their portfolio.
+The site is two halves that share a domain and nothing else.
 
-The Theme features:
+**The homepage** is a portfolio in English, built on the particle theme (see
+Credits). It has particles.js, a scrolling script and an autoplaying video, and
+it speaks to people who take computers apart. Its content is not in
+`content/`: the projects, services and talks are written directly in
+`templates/content.html`.
 
-- Gulp
-- SASS
-- Sweet Scroll
-- Particle.js
-- BrowserSync
-- Font Awesome and Devicon icons
-- Google Analytics
-- Info Customization
+**`/belli/`** is a section in Italian, ["Bello,
+World"](https://belloworld.it/belli/), short pieces explaining one computing
+thing each to people who are not in the trade. It ships no JavaScript, makes no
+external request and reads fine with stylesheets disabled. It has its own
+stylesheet, its own typefaces and its own templates, on purpose. To add a piece
+or change how the section looks, read [BELLI.md](BELLI.md).
 
-## Basic Setup
-
-1. [Install Zola](https://getzola.com)
-2. Clone the particle theme: `git clone https://github.com/svavs/particle-zola.git`
-3. Edit `config.toml` to personalize your site.
-
-## Site and User Settings
-
-You have to fill some informations on the `[extra]` section of the `config.toml` to customize your site.
+## Running it
 
 ```
-# Site settings
-description = "A blog about lorem ipsum dolor sit amet"
-
-# User settings
-username = "Lorem Ipsum"
-user_description = "Anon Developer at Lorem Ipsum Dolor"
-user_title = "Anon Developer"
-email = "my@email.com"
-twitter_username = "lorem_ipsum"
-github_username = "lorem_ipsum"
-gplus_username = "lorem_ipsum"
+zola serve
 ```
 
-## Color and Particle Customization
-- Color Customization
-  - Edit the sass variables (`_vars.scss`)
-- Particle Customization
-  - Edit the json data in particle function in app.js
-  - Refer to [Particle.js](https://github.com/VincentGarreau/particles.js/) for help
+Then <http://127.0.0.1:1111>. Check every change there before pushing: a push to
+`master` publishes the site through GitHub Actions, onto the `gh-pages` branch,
+served at the domain in `static/CNAME`.
 
-To customize the project lists and the about sections, you need to edit the `templates/content.html` template file.
-In future versions will be provided a simpler way.
+## Where everything lives
 
-## Questions
+| What | Where |
+|---|---|
+| Site and author settings | `config.toml`, `[extra]` |
+| Homepage frame and its four sections | `templates/index.html`, `templates/macros.html` |
+| Homepage copy: projects, services, talks | `templates/content.html` |
+| Homepage styles | `sass/main.scss` and its partials, colours in `sass/_vars.scss` |
+| The Italian section | `content/belli/`, `templates/belli/`, `sass/belli.scss` |
+| Fonts, images, scripts | `static/` |
 
-Having any issues file a [GitHub Issue](https://github.com/svavs/particle-zola/issues/new).
+All fonts are self-hosted from `static/fonts/`, subset to latin. The site loads
+nothing from a CDN and calls no third party, so no external service learns who
+reads it. Whatever gets added, keep that true.
 
-## License
-
-This theme is free and open source software, distributed under the The MIT License. So feel free to use this Jekyll theme anyway you want.
+`theme.toml` is here because this repository is a copy of the particle theme
+rather than a site that installs it. Zola ignores the file.
 
 ## Credits
 
-This theme was partially designed with the inspiration from these fine folks
-- [Nathan Randecker](https://github.com/nrandecker/particle)
-- [Willian Justen](https://github.com/willianjusten/will-jekyll-template)
-- [Vincent Garreau](https://github.com/VincentGarreau/particles.js/)
+The homepage is built on [particle](https://github.com/nrandecker/particle) by
+Nathan Randecker, [ported to
+Zola](https://github.com/svavs/particle-zola) by Silvano Sallese, MIT licensed,
+see [LICENSE.md](LICENSE.md). It carries
+[particles.js](https://github.com/VincentGarreau/particles.js/) by Vincent
+Garreau, [sweet-scroll](https://github.com/tsuyoshiwada/sweet-scroll) 2.2.0 by
+tsuyoshiwada, and [Font Awesome](https://fontawesome.com/v4/) 4.7.
+
+Typefaces: Montserrat and VT323 on the homepage, IBM Plex Sans and IBM Plex Sans
+Condensed in `/belli/`, all under the SIL Open Font License.
