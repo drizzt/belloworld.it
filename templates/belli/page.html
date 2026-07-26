@@ -13,8 +13,9 @@
 {%- if page.extra.slides %}
 {%- set slides_url = get_url(path='img/slides/' ~ page.slug) %}
 {%- set slide_size = get_image_metadata(path='static/img/slides/' ~ page.slug ~ '/01.png') %}
+<p class="belli-carousel-note" id="carosello-nota">Le stesse cose in {{ page.extra.slides | length }} schede, la versione per i social.</p>
 <div class="belli-carousel" role="group" tabindex="0"
-     aria-label="Le stesse cose in {{ page.extra.slides | length }} schede, la versione per i social">
+     aria-labelledby="carosello-nota">
   {%- for slide in page.extra.slides %}
   <img src="{{ slides_url | safe }}/{% if loop.index < 10 %}0{% endif %}{{ loop.index }}.png"
        width="{{ slide_size.width }}" height="{{ slide_size.height }}" loading="lazy" decoding="async"
