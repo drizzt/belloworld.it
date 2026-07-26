@@ -1,6 +1,3 @@
-{#- Overrides Zola's built-in Atom template. Today the only feed on this site is the
-    one for the /belli/ section, which is Italian, so the feed is Italian too.
-    The entry summary is the page description, never the generated summary. -#}
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="it">
   <title>{{ section.title }}</title>
