@@ -16,9 +16,10 @@
 {% endblock above %}
 
 {% block content %}
-{# sort_by = "date" in _index.md already gives newest first. #}
+{# sort_by = "date" gives newest first; reversed here because these pieces build
+   on each other and are read oldest first. The feed keeps the newest-first order. #}
 <ul class="belli-list">
-  {% for page in section.pages %}
+  {% for page in section.pages | reverse %}
   <li>
     <h2><a href="{{ page.permalink | safe }}">{{ page.title }}</a></h2>
     <p>{{ page.description }}</p>
