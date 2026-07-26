@@ -7,41 +7,10 @@
 <article>
   <h1>{{ page.title }}</h1>
 
-  {# No date on the page: these pieces do not go stale, and a visible year makes a
-     reader discount something that still holds word for word. The date is in the
-     feed and in article:published_time for anything that needs it. #}
   {{ page.content | safe }}
 </article>
 
 {%- if page.extra.slides %}
-{# The same slides that travel as a carousel, drawn by slides.py, laid on the
-   piece's own page below the text: the article is what a reader came for, the
-   carousel is what they leave with. Scroll snapping carries it, one slide at a
-   time, off a finger, a trackpad, the scrollbar or the arrow keys: the one
-   script below adds the mouse drag those four leave out, and nothing else.
-
-   tabindex is not decoration. Chrome and Firefox make an overflow scroller
-   focusable on their own, Safari does not, and without it the strip cannot be
-   scrolled from the keyboard at all.
-
-   The alt text is the slide's own lines, never "1/7": the words are already in
-   the front matter, so the carousel can read the same way it looks. The first
-   slide is the exception: its lines are the title, and a screen reader has
-   already announced those as the heading of the page.
-
-   The group's label says what the strip is for, not how big it is. Whoever
-   reaches it with a screen reader has just heard the whole article and is
-   about to hear it again in seven pieces; the label is there to say that
-   skipping past it costs them nothing.
-
-   get_url drops a trailing slash, so the one before the file number is written
-   here. The number is padded to match the {n:02d} slides.py writes; Tera has no
-   printf, so the leading zero is a plain test.
-
-   The dimensions are read off the first slide rather than written here, the
-   way base.html reads them off the og:image: every slide is the same square,
-   and changing SIZE in slides.py must not leave the page reserving a box the
-   pictures no longer fill. #}
 {%- set slides_url = get_url(path='img/slides/' ~ page.slug) %}
 {%- set slide_size = get_image_metadata(path='static/img/slides/' ~ page.slug ~ '/01.png') %}
 <div class="belli-carousel" role="group" tabindex="0"
@@ -52,8 +21,6 @@
        alt="{% if loop.first %}Copertina{% else %}{{ slide | join(sep=' ') }}{% endif %}">
   {%- endfor %}
 </div>
-{# Mouse drag. Loaded only where there are slides to drag, and served from here:
-   nothing in this section links to anything off this site. #}
 <script src="{{ get_url(path='js/carousel.js') }}" defer></script>
 {%- endif %}
 

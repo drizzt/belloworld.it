@@ -1,10 +1,3 @@
-{# Standalone base for the /belli/ section. Deliberately does not import macros.html:
-   those macros pull in particles.js, sweet-scroll, main.js and an autoplaying video,
-   none of which a page whose job is to be read has any use for.
-
-   The one script this section loads is js/carousel.js, on article pages that have
-   slides, and it is served from here. Nothing in this section links off this site:
-   no CDN, no font host, no analytics. #}
 <!DOCTYPE html>
 <html lang="it">
 
@@ -13,30 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>{% block title %}Bello, World{% endblock title %}</title>
-  {# index.html and page.html both fill this in. Empty by default on purpose:
-     a template that forgets it should show up as a blank tag, not as a stale
-     copy of a line that lives in _index.md. #}
   <meta name="description" content="{% block description %}{% endblock description %}">
 
-  {# These pieces travel by WhatsApp and Telegram, so the preview is not decoration.
-     A piece with slides shows its own cover, the one slides.py drew; anything
-     without them falls back to the section image. #}
   <meta property="og:site_name" content="Bello, World">
   <meta property="og:locale" content="it_IT">
   {%- set og = 'img/belli-og.png' %}
   {%- if page.extra.slides %}{% set og = 'img/slides/' ~ page.slug ~ '/01.png' %}{% endif %}
   <meta property="og:image" content="{{ get_url(path=og) }}">
-  {# The picture is made of words, so whoever gets the preview read out loud
-     should get them too. The fallback image's lines live in _index.md, out of
-     reach from a page, so only the section can name that one. #}
   {%- if page.extra.slides %}
   <meta property="og:image:alt" content="{{ page.extra.slides.0 | join(sep=' ') }}">
   {%- elif not page %}
   <meta property="og:image:alt" content="{{ section.extra.og | join(sep=' ') }}">
   {%- endif %}
-  {# Telegram crops the preview unless the dimensions are declared, and it is
-     happiest with a square. Read from the file rather than written here, so
-     changing SIZE in slides.py cannot leave these two lying. #}
   {%- set size = get_image_metadata(path='static/' ~ og) %}
   <meta property="og:image:width" content="{{ size.width }}">
   <meta property="og:image:height" content="{{ size.height }}">
@@ -45,8 +26,6 @@
   <meta property="og:url" content="{{ page.permalink | safe }}">
   <meta property="og:title" content="{{ page.title }}">
   <meta property="og:description" content="{{ page.description }}">
-  {# The date stays out of the visible page on purpose, but a machine reading the
-     piece should still know when it was published. #}
   <meta property="article:published_time" content="{{ page.date }}">
   {%- else %}
   <meta property="og:type" content="website">
@@ -55,8 +34,6 @@
   <meta property="og:description" content="{{ section.description }}">
   {%- endif %}
 
-  {# Two faces preloaded: the roman draws every paragraph, the condensed draws the
-     headings above the fold. The italic and the semibold can wait. #}
   <link rel="preload" href="{{ get_url(path='fonts/ibm-plex-sans-latin-400-normal.woff2') }}" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="{{ get_url(path='fonts/ibm-plex-sans-condensed-latin-700-normal.woff2') }}" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="{{ get_url(path='belli.css') }}">
@@ -65,16 +42,12 @@
 
 <body>
 
-  {# Only an article carries the wordmark, as the way back. On the index the big
-     title says the same words right below it, so a masthead there is noise. #}
   {%- if page %}
   <header class="site-header">
     <a href="{{ get_url(path='@/belli/_index.md') }}">Bello, World</a>
   </header>
   {%- endif %}
 
-  {# Everything in this block is set on the green field, above the sheet. Only the
-     index fills it; an article page leaves it empty and starts straight at the sheet. #}
   {% block above %}{% endblock above %}
 
   <main>
