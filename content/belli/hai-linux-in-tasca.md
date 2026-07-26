@@ -44,8 +44,8 @@ slides = [
 ]
 +++
 
-L'ultima volta l'ho lasciata lì: quei programmi regalati ce li hai già in
-casa, e non lo sai.
+L'altra volta ti ho raccontato che esistono programmi scritti da qualcuno e
+regalati a tutti, e ho chiuso dicendo che ce l'hai già in casa.
 
 Adesso ti dico dove.
 
@@ -78,7 +78,7 @@ senza chiedere il permesso a nessuno?
 Quindi lo prendono. Ci mettono sopra la loro parte, quella che vedi tu, e
 vendono il televisore.
 
-È esattamente la faccenda dell'altra volta, vista dall'altro lato: non è che
+È esattamente la stessa faccenda, vista dall'altro lato: non è che
 il programma regalato vale poco. Può essere regalato perché il lavoro
 necessario a costruirlo se lo sono diviso in tanti, e a ognuno conviene.
 
