@@ -24,5 +24,13 @@
 <script src="{{ get_url(path='js/carousel.js') }}" defer></script>
 {%- endif %}
 
-<p class="belli-back"><a href="{{ get_url(path='@/belli/_index.md') }}">Torna all'indice</a></p>
+<p class="belli-back">
+  {%- if page.higher %}
+  <a href="{{ page.higher.permalink }}">Il <em>bello</em> precedente: {{ page.higher.title }}</a><br>
+  {%- endif %}
+  {%- if page.lower %}
+  <a href="{{ page.lower.permalink }}">Il <em>bello</em> successivo: {{ page.lower.title }}</a><br>
+  {%- endif %}
+  <a href="{{ get_url(path='@/belli/_index.md') }}">Torna all'indice</a>
+</p>
 {% endblock content %}
