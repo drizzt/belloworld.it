@@ -11,6 +11,15 @@ generate_feeds = true
 # a search result and in a link preview, so it also names the subject; on the
 # page that second sentence only repeats the intro below it.
 manifesto = "Il computer è tuo, anche il software può esserlo."
+
+# The sharing image for the section and for anything without slides of its own,
+# one string per line the way the slides are written. slides.py draws it.
+og = [
+  "Bello, World",
+  "",
+  "Il computer è tuo,",
+  "anche il software può esserlo.",
+]
 +++
 Ogni *bello* spiega una cosa sola, in poche righe, senza gergo.\
 Sono pensati per chi usa il computer, non per chi lo smonta.

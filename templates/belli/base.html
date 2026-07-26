@@ -15,15 +15,19 @@
   <meta name="description" content="{% block description %}{% endblock description %}">
 
   {# These pieces travel by WhatsApp and Telegram, so the preview is not decoration.
-     The image is a fixed fallback for now; once the carousel generator exists, the
-     first slide of each piece becomes its own og:image. #}
+     A piece with slides shows its own cover, the one slides.py drew; anything
+     without them falls back to the section image. #}
   <meta property="og:site_name" content="Bello, World">
   <meta property="og:locale" content="it_IT">
-  <meta property="og:image" content="{{ get_url(path='img/belli-og.png') }}">
-  {# Telegram crops the preview to a square thumbnail unless the dimensions are
-     declared, so the 1200x630 has to be spelled out here. #}
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
+  {%- set og = 'img/belli-og.png' %}
+  {%- if page.extra.slides %}{% set og = 'img/slides/' ~ page.slug ~ '/01.png' %}{% endif %}
+  <meta property="og:image" content="{{ get_url(path=og) }}">
+  {# Telegram crops the preview unless the dimensions are declared, and it is
+     happiest with a square. Read from the file rather than written here, so
+     changing SIZE in slides.py cannot leave these two lying. #}
+  {%- set size = get_image_metadata(path='static/' ~ og) %}
+  <meta property="og:image:width" content="{{ size.width }}">
+  <meta property="og:image:height" content="{{ size.height }}">
   {%- if page %}
   <meta property="og:type" content="article">
   <meta property="og:url" content="{{ page.permalink | safe }}">

@@ -1,1 +1,8 @@
 public/*
+__pycache__/
+
+# The slides are committed as SVG, which diffs as the words on them. The PNG
+# beside each one is what the carousel and the og:image tag need, and slides.py
+# redraws it here and in CI before every build, so it is output and not source.
+static/img/slides/**/*.png
+static/img/belli-og.png

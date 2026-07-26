@@ -12,6 +12,30 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@master
+      # Only the SVG of each slide is committed; the PNG is not, and this is
+      # where it comes from. The build needs it: templates/belli/base.html reads
+      # the dimensions of the og:image off the file, so a missing PNG is a failed
+      # build and not a missing picture. It writes into static/, which the build
+      # step then copies.
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: 'Draw the carousel images'
+        run: |
+          pip install pillow
+          python3 slides.py
+          # The redraw rewrites the SVGs as well, and CI throws its working tree
+          # away, so a slide edited without rerunning the script would publish
+          # correctly while the committed SVG went on saying something else. The
+          # SVG is only a record of what was published if that cannot happen.
+          # status rather than diff: an SVG that was never committed at all does
+          # not show up as a change to one, and that is the same failure.
+          drifted=$(git status --porcelain -- '*.svg')
+          if [ -n "$drifted" ]; then
+            echo "$drifted"
+            echo "::error::the committed SVGs do not match the front matter: run python3 slides.py and commit"
+            exit 1
+          fi
       - name: 'Build and deploy'
         uses: shalzz/zola-deploy-action@master
         env:
