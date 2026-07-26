@@ -30,7 +30,6 @@
 <div id="particles-js">
   <div class="header">
       <h1>
-        {# Two second pause between loops, so the clip reads as a beat and not a jitter. #}
         <video id="bello-video" autoplay controls muted preload="auto" onended="setTimeout(() => this.play(), 2000)">
           <source src="{{ config.base_url ~ "/bello.mp4" }}" type="video/mp4">
         </video>
@@ -44,7 +43,6 @@
         <a class="link" href="#talks">Talks</a>
       </div>
   </div>
-  {# Lone chevron, drawn inline rather than pulled from an icon font. #}
   <a class="down" href="#about" aria-label="About Me">
     <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8l8 8 8-8"/></svg>
   </a>
