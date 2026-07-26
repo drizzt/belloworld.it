@@ -26,6 +26,14 @@
   {%- set og = 'img/belli-og.png' %}
   {%- if page.extra.slides %}{% set og = 'img/slides/' ~ page.slug ~ '/01.png' %}{% endif %}
   <meta property="og:image" content="{{ get_url(path=og) }}">
+  {# The picture is made of words, so whoever gets the preview read out loud
+     should get them too. The fallback image's lines live in _index.md, out of
+     reach from a page, so only the section can name that one. #}
+  {%- if page.extra.slides %}
+  <meta property="og:image:alt" content="{{ page.extra.slides.0 | join(sep=' ') }}">
+  {%- elif not page %}
+  <meta property="og:image:alt" content="{{ section.extra.og | join(sep=' ') }}">
+  {%- endif %}
   {# Telegram crops the preview unless the dimensions are declared, and it is
      happiest with a square. Read from the file rather than written here, so
      changing SIZE in slides.py cannot leave these two lying. #}
