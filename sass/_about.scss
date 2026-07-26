@@ -7,35 +7,7 @@
   }
 }
 
-.tech {
-  margin: 10px;
-}
-
-.user {
-  text-align: center;
-  font-size: 60px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  p {
-    font-size: 16px;
-  }
-  @media only screen and (min-width: $cut) {
-    flex-wrap: nowrap;
-    font-size: 75px;
-  }
-}
-
 .user-details {
   text-align: center;
   margin: 5px auto;
-}
-
-// One-line pointer to the Italian section at the bottom of the homepage.
-// Own class on purpose: it is unrelated to .user-details and must stay
-// free to move when the homepage priority is reworked.
-.belli-link {
-  text-align: center;
-  margin: 40px auto 5px;
 }

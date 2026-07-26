@@ -1,3 +1,13 @@
+html {
+    // Keeps mobile Safari from inflating text when the phone turns landscape.
+    -webkit-text-size-adjust: 100%;
+}
+// The nav links are plain in-page anchors; the browser does the gliding.
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
 body {
     margin: 0;
     padding: 0;
@@ -10,7 +20,7 @@ body {
 article, aside, figcaption, figure, footer, header, nav, section {
     display: block;
 }
-h1, h2, h3, h4, stong {
+h1, h2, h3, h4 {
     margin-top: 1em;
     padding-top: 1em;
     line-height: 1.25;

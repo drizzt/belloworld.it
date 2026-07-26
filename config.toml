@@ -24,9 +24,7 @@ theme = "github-dark"
 [extra]
 # User settings
 username = "Timothy Mario Redaelli"
-user_description = ""
+# Sits under the site title in the header. Empty today, kept because the header
+# reads it.
 user_title = ""
 email = "&#098;&#101;&#108;&#108;&#111;&#064;&#098;&#101;&#108;&#108;&#111;&#119;&#111;&#114;&#108;&#100;&#046;&#105;&#116;"
-#twitter_username = "lorem_ipsum"
-#github_username =  "lorem_ipsum"
-#gplus_username =  "lorem_ipsum"

@@ -23,7 +23,6 @@
     <p>Ported to Zola with <span class="love">❤</span> by <a href="https://github.com/svavs">Silvano Sallese</a> (original by <a href="https://github.com/nrandecker">Nathan Randecker</a>)</p>
 </footer>
 <script src="{{ config.base_url ~ "/js/particles.min.js" }}"></script>
-<script src="{{ config.base_url ~ "/js/sweet-scroll.min.js" }}"></script>
 <script src="{{ config.base_url ~ "/js/main.js" }}"></script>
 {% endmacro footer %}
 
@@ -31,28 +30,23 @@
 <div id="particles-js">
   <div class="header">
       <h1>
-        <video id="bello-video" autoplay controls muted preload="auto" data-setup="{}">
+        {# Two second pause between loops, so the clip reads as a beat and not a jitter. #}
+        <video id="bello-video" autoplay controls muted preload="auto" onended="setTimeout(() => this.play(), 2000)">
           <source src="{{ config.base_url ~ "/bello.mp4" }}" type="video/mp4">
         </video>
-        <script>
-
-          document.getElementById('bello-video').addEventListener('ended',myHandler,false);
-          function myHandler(e) {
-            setTimeout(function(){
-              document.getElementById('bello-video').play();
-            }, 2000);
-          }
-        </script>
         <span class="site-title">{{ config.title }}</span>
         <span class="site-description">{{ config.extra.user_title | linebreaksbr | safe }}</span>
       </h1>
       <div class="header-links">
-        <a class="link" href="#about" data-scroll>About Me</a>
-        <a class="link" href="#projects" data-scroll>Projects</a>
-        <a class="link" href="#services" data-scroll>Services</a>
-        <a class="link" href="#talks" data-scroll>Talks</a>
+        <a class="link" href="#about">About Me</a>
+        <a class="link" href="#projects">Projects</a>
+        <a class="link" href="#services">Services</a>
+        <a class="link" href="#talks">Talks</a>
       </div>
   </div>
-  <a class="down" href="#about" data-scroll><i class="icon fa fa-chevron-down" aria-hidden="true"></i></a>
+  {# Lone chevron, drawn inline rather than pulled from an icon font. #}
+  <a class="down" href="#about" aria-label="About Me">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8l8 8 8-8"/></svg>
+  </a>
 </div>
 {% endmacro header %}
