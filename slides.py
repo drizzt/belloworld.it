@@ -178,7 +178,7 @@ def render(lines, font_path, footer=None):
     if footer:
         small = ImageFont.truetype(ROMAN, FOOTER_SIZE)
         top = SIZE - MARGIN + FOOTER_SIZE / 2
-        draw.text((MARGIN, top), "belloworld.it", font=small, fill=CARTA_TENUE)
+        draw.text((MARGIN, top), "belli.belloworld.it", font=small, fill=CARTA_TENUE)
         draw.text((SIZE - MARGIN, top), footer, font=small,
                   fill=CARTA_TENUE, anchor="ra")
     return img
