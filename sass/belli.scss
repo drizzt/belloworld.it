@@ -278,19 +278,39 @@ hr {
   margin: 0 0 0.35rem;
 }
 
+// The title is the link, so it has to look like one before anything is touched.
+// Set in ink with no rule under it, it reads as a heading: the colour swap that
+// used to be the only mark of a link needs a hover a phone never has, so on a
+// phone there was nothing at all. Colour and rule are both here because colour
+// on its own is no help to a reader who cannot tell these two apart. No colour
+// is named: dropping the old `color: inherit` is what lets `main a` reach these,
+// and `main a:hover` already takes the rule off, the same as in a piece's body.
 .belli-list a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.belli-list a:hover,
-.belli-list a:focus {
-  color: var(--vermiglio);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.15em;
 }
 
 .belli-list p {
   margin-bottom: 0;
   color: var(--inchiostro-tenue);
+}
+
+// The description belongs to the same link as the title above it. A stretched
+// overlay hands the whole item to the anchor, so a thumb landing anywhere in the
+// block opens the piece rather than only the two lines of the heading. The gap
+// between items is padding on the li, i.e. inside its box, so it goes to the
+// item below it, which is the one a thumb reaching down is aiming for.
+// ponytail: this costs text selection inside an item. Two lines of description
+// nobody copies is worth the target; drop the ::after if that stops being true.
+.belli-list li {
+  position: relative;
+}
+
+.belli-list a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
 }
 
 // ------------------------------------------------------------- the carousel
