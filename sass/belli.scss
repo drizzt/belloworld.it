@@ -322,10 +322,21 @@ hr {
 // A slide is short of the full measure so the next one peeks past the right
 // edge. That sliver is the only thing telling a reader the strip scrolls, and
 // it costs a number rather than a caption or a control.
+
+// The line above the strip says what the strip is: the piece again, in cards,
+// the shape it takes on the social networks. It is the group's label as well,
+// through aria-labelledby, so whoever hears the page and whoever sees it get
+// the same sentence and neither can be changed without the other. It carries
+// the distance from the article that the strip used to carry.
+.belli-carousel-note {
+  margin: 3rem 0 0.75rem;
+  color: var(--inchiostro-tenue);
+  font-size: var(--belli-small);
+}
+
 .belli-carousel {
   display: flex;
   gap: var(--belli-gap);
-  margin-top: 3rem;
   overflow-x: auto;
   overscroll-behavior-x: contain;
   scroll-snap-type: x mandatory;
