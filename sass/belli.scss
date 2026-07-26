@@ -293,6 +293,66 @@ hr {
   color: var(--inchiostro-tenue);
 }
 
+// ------------------------------------------------------------- the carousel
+
+// The slides slides.py draws, laid on the sheet like a plate section in a
+// printed magazine. They are green on paper, so the edges read even mid-swipe;
+// on the field they would be the same colour as the ground they sit on.
+//
+// A slide is short of the full measure so the next one peeks past the right
+// edge. That sliver is the only thing telling a reader the strip scrolls, and
+// it costs a number rather than a caption or a control.
+.belli-carousel {
+  display: flex;
+  gap: var(--belli-gap);
+  margin-top: 3rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  // Where the scrollbar is drawn rather than overlaid it is the one thing on
+  // screen that says how far along the strip you are, so it has to be legible.
+  // The track is the sheet's hairline; the thumb is the ink of the text beside
+  // it. Drawn in --filo it read as nothing at all, which is how it started.
+  scrollbar-width: thin;
+  scrollbar-color: var(--inchiostro-tenue) var(--filo);
+}
+
+// carousel.js adds these. The grab cursor is never promised by the stylesheet
+// alone: without the script the strip still scrolls, but not by dragging it.
+.belli-carousel.is-draggable {
+  cursor: grab;
+}
+
+.belli-carousel.is-dragging {
+  cursor: grabbing;
+  // Snapping fights the drag frame by frame. It comes back on release, and
+  // settling onto the nearest slide is what makes letting go feel finished.
+  scroll-snap-type: none;
+  user-select: none;
+}
+
+.belli-carousel img {
+  flex: 0 0 86%;
+  width: 100%;
+  height: auto;
+  scroll-snap-align: start;
+}
+
+// The strip is scrolled from the keyboard, so it has to show focus the way a
+// link does. Vermilion reads 5.0:1 on the sheet; it is never asked to do this
+// on the green.
+.belli-carousel:focus-visible {
+  outline: 2px solid var(--vermiglio);
+  outline-offset: 3px;
+}
+
+// A mouse press focuses the strip too, so the arrow keys work straight after a
+// drag without tabbing to it first. It should not draw the ring while doing so:
+// carousel.js takes this class off again at the first keystroke.
+.belli-carousel.is-mouse-focus:focus-visible {
+  outline: none;
+}
+
 .belli-back {
   margin: 3rem 0 0;
   padding-top: 1.5rem;
