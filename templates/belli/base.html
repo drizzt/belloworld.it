@@ -1,6 +1,10 @@
 {# Standalone base for the /belli/ section. Deliberately does not import macros.html:
    those macros pull in particles.js, sweet-scroll, main.js and an autoplaying video,
-   and this section must ship no JavaScript. #}
+   none of which a page whose job is to be read has any use for.
+
+   The one script this section loads is js/carousel.js, on article pages that have
+   slides, and it is served from here. Nothing in this section links off this site:
+   no CDN, no font host, no analytics. #}
 <!DOCTYPE html>
 <html lang="it">
 
