@@ -33,6 +33,13 @@ python3 slides.py
 zola serve
 ```
 
+The templates use Tera v2, so Zola 0.23 or newer is required. An older one stops
+at `Unknown tag`. To install or upgrade:
+
+```
+cargo install --locked --git https://github.com/getzola/zola
+```
+
 Then <http://127.0.0.1:1111>. The first line is not optional on a fresh clone:
 only the SVG of each slide is committed, and the templates read the dimensions
 of the PNG beside it for the `og:image` tags, so a missing PNG is a build that
@@ -49,7 +56,7 @@ the build if the committed SVGs no longer say what the front matter says.
 | What | Where |
 |---|---|
 | Site and author settings | `config.toml`, `[extra]` |
-| Homepage frame and its four sections | `templates/index.html`, `templates/macros.html` |
+| Homepage frame and its four sections | `templates/index.html` |
 | Homepage copy: projects, services, talks | `templates/content.html` |
 | Homepage styles | `sass/main.scss` and its partials, colours in `sass/_vars.scss` |
 | The Italian section | `content/belli/`, `templates/belli/`, `sass/belli.scss` |
