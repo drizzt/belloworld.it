@@ -14,7 +14,7 @@
   {%- if page.extra.slides %}{% set og = 'img/slides/' ~ page.slug ~ '/01.png' %}{% endif %}
   <meta property="og:image" content="{{ get_url(path=og) }}">
   {%- if page.extra.slides %}
-  <meta property="og:image:alt" content="{{ page.extra.slides.0 | join(sep=' ') }}">
+  <meta property="og:image:alt" content="{{ page.extra.slides[0] | join(sep=' ') }}">
   {%- elif not page %}
   <meta property="og:image:alt" content="{{ section.extra.og | join(sep=' ') }}">
   {%- endif %}
