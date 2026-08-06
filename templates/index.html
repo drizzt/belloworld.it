@@ -1,30 +1,42 @@
-{% import "macros.html" as macros %}
-{% import "content.html" as content %}
-
 <!DOCTYPE html>
 <html lang="en">
 
-  {{ macros::head() }}
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{{ config.title }}</title>
+  <meta name="description" content="{{ config.description }}">
+
+  <link rel="stylesheet" href="{{ config.base_url ~ "/main.css" }}">
+  <link rel="me" href="https://livellosegreto.it/@timothy">
+</head>
 
   <body>
 
-      {{ macros::header() }}
+<div id="particles-js">
+  <div class="header">
+      <h1>
+        <video id="bello-video" autoplay controls muted preload="auto" onended="setTimeout(() => this.play(), 2000)">
+          <source src="{{ config.base_url ~ "/bello.mp4" }}" type="video/mp4">
+        </video>
+        <span class="site-title">{{ config.title }}</span>
+        <span class="site-description">{{ config.extra.user_title | newlines_to_br | safe }}</span>
+      </h1>
+      <div class="header-links">
+        <a class="link" href="#about">About Me</a>
+        <a class="link" href="#projects">Projects</a>
+        <a class="link" href="#services">Services</a>
+        <a class="link" href="#talks">Talks</a>
+      </div>
+  </div>
+  <a class="down" href="#about" aria-label="About Me">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8l8 8 8-8"/></svg>
+  </a>
+</div>
 
-      <section id="about">
-        {{ content::about() }}
-      </section>
-
-      <section id="projects">
-        {{ content::projects() }}
-      </section>
-
-      <section id="services">
-        {{ content::services() }}
-      </section>
-
-      <section id="talks">
-        {{ content::talks() }}
-      </section>
+      {% include "content.html" %}
 
       {#
       <p lang="it" class="belli-link">
@@ -34,12 +46,16 @@
       </p>
       #}
 
-      {% block content %}
-      <p></p>
-      {% endblock content %}
-
-
-      {{ macros::footer() }}
+<footer class="footer">
+    {% if config.extra.email %}
+    <p>&copy; <a href="mailto:{{ config.extra.email | safe }}">{{ config.extra.username }}</a></p>
+    {% else %}
+    <p>&copy; {{ config.extra.username }}</p>
+    {% endif %}
+    <p>Ported to Zola with <span class="love">❤</span> by <a href="https://github.com/svavs">Silvano Sallese</a> (original by <a href="https://github.com/nrandecker">Nathan Randecker</a>)</p>
+</footer>
+<script src="{{ config.base_url ~ "/js/particles.min.js" }}"></script>
+<script src="{{ config.base_url ~ "/js/main.js" }}"></script>
 
   </body>
 

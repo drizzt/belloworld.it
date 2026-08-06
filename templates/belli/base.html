@@ -11,17 +11,17 @@
   <meta property="og:site_name" content="Bello, World">
   <meta property="og:locale" content="it_IT">
   {%- set og = 'img/belli-og.png' %}
-  {%- if page.extra.slides %}{% set og = 'img/slides/' ~ page.slug ~ '/01.png' %}{% endif %}
+  {%- if page?.extra?.slides %}{% set og = 'img/slides/' ~ page.slug ~ '/01.png' %}{% endif %}
   <meta property="og:image" content="{{ get_url(path=og) }}">
-  {%- if page.extra.slides %}
+  {%- if page?.extra?.slides %}
   <meta property="og:image:alt" content="{{ page.extra.slides[0] | join(sep=' ') }}">
-  {%- elif not page %}
+  {%- elif page is not defined %}
   <meta property="og:image:alt" content="{{ section.extra.og | join(sep=' ') }}">
   {%- endif %}
   {%- set size = get_image_metadata(path='static/' ~ og) %}
   <meta property="og:image:width" content="{{ size.width }}">
   <meta property="og:image:height" content="{{ size.height }}">
-  {%- if page %}
+  {%- if page is defined %}
   <meta property="og:type" content="article">
   <meta property="og:url" content="{{ page.permalink | safe }}">
   <meta property="og:title" content="{{ page.title }}">
@@ -42,7 +42,7 @@
 
 <body>
 
-  {%- if page %}
+  {%- if page is defined %}
   <header class="site-header">
     <a href="{{ get_url(path='@/belli/_index.md') }}">Bello, World</a>
   </header>
