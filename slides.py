@@ -37,6 +37,12 @@ FONTS = ROOT / "static/fonts"
 OUT = ROOT / "static/img/slides"
 OG = ROOT / "static/img/belli-og.png"
 
+# The address in the footer of every slide. Read on a phone, off a picture, by
+# someone who then types it, so it names the section outright and redirects to
+# /belli/. The two drawings write the same string or the committed SVG stops
+# being a record of what was published.
+FOOTER_URL = "belli.belloworld.it"
+
 SIZE = 1080
 MARGIN = 100
 BAR = SIZE // 40
@@ -178,7 +184,7 @@ def render(lines, font_path, footer=None):
     if footer:
         small = ImageFont.truetype(ROMAN, FOOTER_SIZE)
         top = SIZE - MARGIN + FOOTER_SIZE / 2
-        draw.text((MARGIN, top), "belli.belloworld.it", font=small, fill=CARTA_TENUE)
+        draw.text((MARGIN, top), FOOTER_URL, font=small, fill=CARTA_TENUE)
         draw.text((SIZE - MARGIN, top), footer, font=small,
                   fill=CARTA_TENUE, anchor="ra")
     return img
@@ -218,7 +224,7 @@ def svg(lines, font_path, footer=None):
     if footer:
         small = ImageFont.truetype(ROMAN, FOOTER_SIZE)
         baseline = SIZE - MARGIN + FOOTER_SIZE / 2 + small.getmetrics()[0]
-        out.append(text(MARGIN, baseline, "belloworld.it", ROMAN,
+        out.append(text(MARGIN, baseline, FOOTER_URL, ROMAN,
                         FOOTER_SIZE, CARTA_TENUE))
         out.append(text(SIZE - MARGIN, baseline, footer, ROMAN,
                         FOOTER_SIZE, CARTA_TENUE, anchor="end"))
