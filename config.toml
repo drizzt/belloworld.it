@@ -2,11 +2,11 @@
 base_url = "https://belloworld.it"
 
 # The site title and description; used in feeds by default.
-title = "Bello World"
-description = "Bello World Projects"
+title = "Bello, World"
+description = "Il computer è tuo, anche il software può esserlo. Informatica spiegata a chi non è del mestiere."
 
 # The default language; used in feeds.
-default_language = "en"
+default_language = "it"
 
 # When set to "true", the Sass files in the `sass` directory in the site root are compiled.
 # Sass files in theme directories are always compiled.
@@ -16,17 +16,9 @@ compile_sass = true
 minify_html = true
 
 [markdown]
-# Whether to do syntax highlighting
-# Theme can be customised by setting the `theme` variable to a theme supported by Zola
 smart_punctuation = true
-
-[markdown.highlighting]
-theme = "github-dark"
 
 [extra]
 # User settings
 username = "Timothy Mario Redaelli"
-# Sits under the site title in the header. Empty today, kept because the header
-# reads it.
-user_title = ""
 email = "&#098;&#101;&#108;&#108;&#111;&#064;&#098;&#101;&#108;&#108;&#111;&#119;&#111;&#114;&#108;&#100;&#046;&#105;&#116;"
