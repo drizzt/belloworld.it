@@ -1,0 +1,22 @@
+{% extends "belli/base.html" %}
+
+{% block title %}Questa pagina non c'è{% endblock title %}
+{% block description %}L'indirizzo non porta a niente. L'indice è qui.{% endblock description %}
+
+{% block head %}
+<meta property="og:image:alt" content="Bello, World">
+<meta name="robots" content="noindex, follow">
+{% endblock head %}
+
+{% block content %}
+<article>
+  <h1>Questa pagina non c'è</h1>
+
+  <p>Può darsi che l'indirizzo sia scritto male, o che qui non ci sia
+  mai stato niente.</p>
+</article>
+
+<p class="belli-back">
+  <a href="{{ get_url(path='@/belli/_index.md') }}">Torna all'indice</a>
+</p>
+{% endblock content %}
