@@ -1,3 +1,3 @@
 +++
-redirect_to = "belli"
+template = "home.html"
 +++

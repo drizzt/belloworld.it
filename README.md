@@ -7,10 +7,14 @@ is `slides.py`, which draws the slide images for `/belli/` and wants Python and
 
 The site is one thing: ["Bello, World"](https://belloworld.it/belli/), a section
 in Italian of short pieces explaining one computing thing each to people who are
-not in the trade. The root of the domain is a redirect to `/belli/`, written in
-`content/_index.md`. It makes no external request and reads fine with
-stylesheets disabled. The one script it loads is `static/js/carousel.js`, on the
-pieces that carry slides.
+not in the trade. The root of the domain plays the intro video the name comes
+from, and hands the reader to `/belli/` when it ends. The video ships twice,
+`static/bello.av1.mp4` and `static/bello.h264.mp4`, and the browser fetches whichever
+of the two it can decode, never both. It
+makes no external request and reads fine with stylesheets disabled. It loads one
+script, `static/js/carousel.js`, on the pieces that carry slides, and carries a
+few inline lines on the root, for the jump to the section: without either, the
+strip still scrolls and the root still has its link.
 
 A piece is one markdown file in `content/belli/`, and its address comes from the
 `slug` in the front matter. The slides travel in an `extra.slides` array there,
@@ -48,7 +52,7 @@ the build if the committed SVGs no longer say what the front matter says.
 | What | Where |
 |---|---|
 | Site and author settings | `config.toml`, `[extra]` |
-| The redirect from the root of the domain | `content/_index.md`, `templates/internal/alias.html` |
+| The root of the domain, video and all | `content/_index.md`, `templates/home.html`, `static/bello.av1.mp4`, `static/bello.h264.mp4` |
 | The section itself | `content/belli/`, `templates/belli/`, `sass/belli.scss` |
 | The page shown for an address that leads nowhere | `templates/404.html` |
 | The slides, and how they are drawn | `slides.py`, into `static/img/slides/<slug>/` |

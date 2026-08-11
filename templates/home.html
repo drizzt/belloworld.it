@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Bello, World</title>
+  <meta name="description" content="{{ config.description }}">
+
+  {%- set belli = get_section(path='belli/_index.md') %}
+  <link rel="canonical" href="{{ belli.permalink | safe }}">
+  <meta name="robots" content="noindex, follow">
+
+  <meta property="og:site_name" content="Bello, World">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ belli.permalink | safe }}">
+  <meta property="og:title" content="{{ belli.title }}">
+  <meta property="og:description" content="{{ belli.description }}">
+  <meta property="og:image" content="{{ get_url(path='img/belli-og.png') }}">
+  <meta property="og:image:alt" content="{{ belli.extra.og | join(sep=' ') }}">
+  {%- set size = get_image_metadata(path='static/img/belli-og.png') %}
+  <meta property="og:image:width" content="{{ size.width }}">
+  <meta property="og:image:height" content="{{ size.height }}">
+
+  <link rel="preload" href="{{ get_url(path='fonts/ibm-plex-sans-condensed-latin-700-normal.woff2') }}" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="{{ get_url(path='belli.css') }}">
+</head>
+
+<body class="home">
+
+  <video class="home-video" width="1440" height="1080" autoplay muted playsinline aria-label="Un terminale scrive una riga di codice, la cancella e resta scritto bello, world">
+    <source src="{{ get_url(path='bello.av1.mp4') }}" type="video/mp4; codecs=&quot;av01.0.09M.08&quot;">
+    <source src="{{ get_url(path='bello.h264.mp4') }}" type="video/mp4; codecs=&quot;avc1.640032&quot;">
+  </video>
+
+  <p class="home-below">
+    <button class="home-audio" type="button" hidden>Con l'audio</button>
+    <a href="{{ belli.permalink | safe }}">Entra</a>
+  </p>
+
+  <script>
+    (function () {
+      var video = document.querySelector('.home-video');
+      var audio = document.querySelector('.home-audio');
+      function enter() { location.replace(document.querySelector('.home-below a').href); }
+      video.addEventListener('ended', enter);
+      video.addEventListener('error', enter);
+      function setMuted(on) {
+        video.muted = on;
+        audio.hidden = !on;
+        video.classList.toggle('is-tappable', on);
+      }
+      function unmute() {
+        if (!video.muted) { return; }
+        setMuted(false);
+        video.currentTime = 0;
+        video.play().catch(function () { setMuted(true); video.play(); });
+      }
+      audio.addEventListener('click', unmute);
+      video.addEventListener('click', unmute);
+      setMuted(true);
+    })();
+  </script>
+
+</body>
+
+</html>

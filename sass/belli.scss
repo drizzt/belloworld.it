@@ -71,6 +71,7 @@ $unicode-latin: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U
   --belli-lead: 1.7;
   --belli-measure: 34rem;
   --belli-gap: 1.5rem;
+  --belli-video-max: 78vh;
 
   // The title is sized to fill the sheet's column on a wide screen: it is the
   // masthead of the section, not a heading above it.
@@ -115,7 +116,8 @@ a {
 
 // Keyboard focus has to stay visible on both grounds, so it is drawn in the
 // colour of the text it belongs to rather than a fixed one.
-a:focus-visible {
+a:focus-visible,
+.home-audio:focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 3px;
 }
@@ -137,6 +139,13 @@ p {
 .site-header {
   padding-top: var(--belli-gap);
   padding-bottom: var(--belli-gap);
+}
+
+// The small-caps chrome, set once: the wordmark at the top of every page, and
+// the row of words under the video on the root. Same face, same tracking, so
+// changing one can never leave the other behind.
+.site-header,
+.home-below {
   font-family: var(--belli-display);
   font-weight: 700;
   font-size: var(--belli-small);
@@ -144,13 +153,19 @@ p {
   text-transform: uppercase;
 }
 
-.site-header a {
+.site-header a,
+.home-below a,
+.home-audio {
   color: var(--carta-tenue);
   text-decoration: none;
 }
 
 .site-header a:hover,
-.site-header a:focus {
+.site-header a:focus,
+.home-below a:hover,
+.home-below a:focus,
+.home-audio:hover,
+.home-audio:focus {
   color: var(--carta);
 }
 
@@ -396,3 +411,69 @@ hr {
 // screenshots a page instead of watching it - headless Chrome, so link
 // previewers and auditing tools - caught them mid-fade and produced a washed
 // out title. A page whose whole job is to be read owes nobody 400ms of motion.
+
+// ---------------------------------------------------- the root of the domain
+
+// The root is the intro video and one link, on the same green as everything
+// else. The video is the page's content, not decoration, which is why it is the
+// one thing here allowed to move: whoever typed the bare address came for it.
+// It starts muted because no browser lets a first visit carry sound. The track
+// is in the file, and the word beside the video offers to play it again with
+// the sound on, so never strip the audio from the mp4 and leave that word.
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--belli-gap);
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: var(--belli-gap);
+}
+
+// 4:3. The width is what binds on a phone. The height is what binds on
+// a desktop, where the frame is 1080 pixels tall on its own and a width-only
+// fit stands it taller than the window, pushing the word underneath off screen.
+// Both auto, because the markup carries width and height as presentational
+// hints: leave either specified and whichever limit bites first stretches the
+// frame instead of scaling it.
+.home-video {
+  max-width: 100%;
+  max-height: var(--belli-video-max);
+  width: auto;
+  height: auto;
+}
+
+// On a phone the frame is the whole screen and the word underneath is a small
+// target, so a tap anywhere on the video turns the sound on too. The script
+// adds the class, the way the carousel does, and takes it off again once the
+// sound is on: with nothing left to tap the cursor must not say otherwise.
+.home-video.is-tappable {
+  cursor: pointer;
+}
+
+// The link is the only way through without JavaScript, so it is drawn as a link
+// and never hidden. With the script it is the way out before the video ends.
+// The audio button beside it is the opposite: it does nothing without the
+// script, so the markup ships it hidden and the script is what reveals it.
+// The face, the tracking and the two colours come from the wordmark's rule up
+// in the field; only the row itself is set here.
+.home-below {
+  display: flex;
+  gap: calc(var(--belli-gap) * 1.5);
+  margin: 0;
+}
+
+// The button is a button for the keyboard and the screen reader, and a word on
+// the green for everyone else. No box, nothing to press but the letters. The
+// three inherits are not decoration: a button's own styles beat inheritance,
+// so without them the word would not match the link beside it.
+.home-audio {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+}
