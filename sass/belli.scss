@@ -117,7 +117,7 @@ a {
 // Keyboard focus has to stay visible on both grounds, so it is drawn in the
 // colour of the text it belongs to rather than a fixed one.
 a:focus-visible,
-.home-audio:focus-visible {
+.home-play:focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 3px;
 }
@@ -154,8 +154,7 @@ p {
 }
 
 .site-header a,
-.home-below a,
-.home-audio {
+.home-below a {
   color: var(--carta-tenue);
   text-decoration: none;
 }
@@ -163,9 +162,7 @@ p {
 .site-header a:hover,
 .site-header a:focus,
 .home-below a:hover,
-.home-below a:focus,
-.home-audio:hover,
-.home-audio:focus {
+.home-below a:focus {
   color: var(--carta);
 }
 
@@ -417,9 +414,11 @@ hr {
 // The root is the intro video and one link, on the same green as everything
 // else. The video is the page's content, not decoration, which is why it is the
 // one thing here allowed to move: whoever typed the bare address came for it.
-// It starts muted because no browser lets a first visit carry sound. The track
-// is in the file, and the word beside the video offers to play it again with
-// the sound on, so never strip the audio from the mp4 and leave that word.
+// Nothing starts on its own. A word sits on the frame and waits, and the click
+// on it is what buys the sound: no browser lets a first visit carry sound
+// unasked, a click asks. So it plays once, with the audio on, and never twice.
+// The track is in the file and the word promises it, so never strip the audio
+// from the mp4 and leave the word standing.
 .home {
   display: flex;
   flex-direction: column;
@@ -431,12 +430,25 @@ hr {
   padding: var(--belli-gap);
 }
 
+// The frame is the video plus the word laid over it, and it shrinks to the
+// video: the word has to cover the picture and nothing beside it.
+.home-frame {
+  position: relative;
+  display: flex;
+  max-width: 100%;
+}
+
 // 4:3. The width is what binds on a phone. The height is what binds on
 // a desktop, where the frame is 1080 pixels tall on its own and a width-only
 // fit stands it taller than the window, pushing the word underneath off screen.
 // Both auto, because the markup carries width and height as presentational
 // hints: leave either specified and whichever limit bites first stretches the
 // frame instead of scaling it.
+// Nothing here draws the waiting frame: the markup carries the video's own
+// first frame as a poster, so the word sits on the lit terminal from the first
+// paint instead of on an empty box. Recut the video and recut the poster:
+// ffmpeg -i static/bello.h264.mp4 -frames:v 1 -c:v libwebp -quality 75
+// static/bello.poster.webp
 .home-video {
   max-width: 100%;
   max-height: var(--belli-video-max);
@@ -444,36 +456,48 @@ hr {
   height: auto;
 }
 
-// On a phone the frame is the whole screen and the word underneath is a small
-// target, so a tap anywhere on the video turns the sound on too. The script
-// adds the class, the way the carousel does, and takes it off again once the
-// sound is on: with nothing left to tap the cursor must not say otherwise.
-.home-video.is-tappable {
-  cursor: pointer;
-}
-
 // The link is the only way through without JavaScript, so it is drawn as a link
 // and never hidden. With the script it is the way out before the video ends.
-// The audio button beside it is the opposite: it does nothing without the
-// script, so the markup ships it hidden and the script is what reveals it.
-// The face, the tracking and the two colours come from the wordmark's rule up
-// in the field; only the row itself is set here.
+// The face, the tracking and the colour come from the wordmark's rule up in the
+// field; the gap above it comes from the column; only the paragraph's own
+// margin has to go.
 .home-below {
-  display: flex;
-  gap: calc(var(--belli-gap) * 1.5);
   margin: 0;
 }
 
-// The button is a button for the keyboard and the screen reader, and a word on
-// the green for everyone else. No box, nothing to press but the letters. The
-// three inherits are not decoration: a button's own styles beat inheritance,
-// so without them the word would not match the link beside it.
-.home-audio {
+// The word that starts the video. It is a button for the keyboard and the
+// screen reader, and a word on the picture for everyone else: no box, no
+// triangle, nothing to press but the letters. It covers the whole frame rather
+// than sitting in the middle of it, because on a phone the video is the screen
+// and the target should be the screen too. It wears the same face and tracking
+// as the chrome up in the field, which is why the word is the site's word, but
+// it is set here rather than joined to that rule: this one is read at the size
+// of the manifesto, not of a caption, and a rule that promises one size for
+// everything it names must not name something that wants another. The box reset
+// is not decoration either: a button's own styles beat inheritance. It ships
+// hidden and the script reveals it, since without the script the video keeps
+// its native controls instead.
+.home-play {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
   padding: 0;
   border: 0;
   background: none;
-  font: inherit;
-  letter-spacing: inherit;
-  text-transform: inherit;
+  color: var(--carta);
+  font-family: var(--belli-display);
+  font-weight: 700;
+  font-size: var(--belli-manifesto);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   cursor: pointer;
+}
+
+// The display above is an author rule and the hidden attribute is only a user
+// agent one, so the attribute loses and the word never goes away on its own.
+// Without this line a button stretched over the whole frame stays there and
+// swallows every click meant for the video underneath, script or no script.
+.home-play[hidden] {
+  display: none;
 }
