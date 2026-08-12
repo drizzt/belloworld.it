@@ -25,6 +25,11 @@
 <script src="{{ get_url(path='js/carousel.js') }}" defer></script>
 {%- endif %}
 
+<p class="belli-scrivi">
+  Hai una domanda su questo <em>bello</em>?
+  <a href="mailto:{{ config.extra.email | safe }}?subject={{ page.title | urlencode }}">Scrivimi</a>.
+</p>
+
 {%- if not page.extra.fuori %}
 {%- set sezione = get_section(path='belli/_index.md') %}
 {%- set_global passato = false %}

@@ -396,6 +396,15 @@ hr {
   outline: none;
 }
 
+// The invitation to write, one line above the chain. It carries no rule of its
+// own: the chain's hairline right below already closes the reading, and two
+// hairlines that close together read as a mistake.
+.belli-scrivi {
+  margin: 3rem 0 0;
+  color: var(--inchiostro-tenue);
+  font-size: var(--belli-small);
+}
+
 .belli-back {
   margin: 3rem 0 0;
   padding-top: 1.5rem;
