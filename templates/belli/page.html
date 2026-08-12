@@ -25,12 +25,27 @@
 <script src="{{ get_url(path='js/carousel.js') }}" defer></script>
 {%- endif %}
 
+{%- if not page.extra.fuori %}
+{%- set sezione = get_section(path='belli/_index.md') %}
+{%- set_global passato = false %}
+{%- set_global precedente = false %}
+{%- set_global successivo = false %}
+{%- for p in sezione.pages %}
+{%- if p.slug == page.slug %}
+{%- set_global passato = true %}
+{%- elif not p.extra.fuori %}
+{%- if not passato %}{% set_global successivo = p %}
+{%- elif not precedente %}{% set_global precedente = p %}
+{%- endif %}
+{%- endif %}
+{%- endfor %}
+{%- endif %}
 <p class="belli-back">
-  {%- if page.higher %}
-  <a href="{{ page.higher.permalink }}">Il <em>bello</em> precedente: {{ page.higher.title }}</a><br>
+  {%- if precedente %}
+  <a href="{{ precedente.permalink }}">Il <em>bello</em> precedente: {{ precedente.title }}</a><br>
   {%- endif %}
-  {%- if page.lower %}
-  <a href="{{ page.lower.permalink }}">Il <em>bello</em> successivo: {{ page.lower.title }}</a><br>
+  {%- if successivo %}
+  <a href="{{ successivo.permalink }}">Il <em>bello</em> successivo: {{ successivo.title }}</a><br>
   {%- endif %}
   <a href="{{ get_url(path='@/belli/_index.md') }}">Torna all'indice</a>
 </p>

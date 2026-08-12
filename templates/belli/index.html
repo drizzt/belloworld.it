@@ -14,11 +14,17 @@
 
 {% block content %}
 <ul class="belli-list">
-  {% for page in section.pages | reverse %}
+  {% for page in section.pages | reverse %}{% if not page.extra.fuori %}
   <li>
     <h2><a href="{{ page.permalink | safe }}">{{ page.title }}</a></h2>
     <p>{{ page.description }}</p>
   </li>
-  {% endfor %}
+  {% endif %}{% endfor %}
+  {% for page in section.pages | reverse %}{% if page.extra.fuori %}
+  <li>
+    <h2><a href="{{ page.permalink | safe }}">{{ page.title }}</a></h2>
+    <p>{{ page.description }}</p>
+  </li>
+  {% endif %}{% endfor %}
 </ul>
 {% endblock content %}

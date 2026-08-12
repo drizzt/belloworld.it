@@ -5,6 +5,7 @@ slug = "quel-numero-non-ti-convince-da-solo"
 date = 2026-08-06
 
 [extra]
+fuori = true
 slides = [
   [
     "Quel numero",
