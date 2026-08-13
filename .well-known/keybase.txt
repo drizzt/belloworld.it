@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/drizzt
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://belloworld.it
+  * I am drizzt (https://keybase.io/drizzt) on keybase.
+  * I have a public key ASDfA-Ofy8MC_bXRxuqNfdKUbuzv8oh0RpUS8GDP5tO5vQo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0101d3ae15fd0a47c6a360ab07952aebcf214ef5a4ed7452614446d307f363b2f90a0a",
+      "host": "keybase.io",
+      "kid": "0120df03e39fcbc302fdb5d1c6ea8d7dd2946eeceff28874469512f060cfe6d3b9bd0a",
+      "uid": "8b65997ebbe68f689da6633620ae8700",
+      "username": "drizzt"
+    },
+    "merkle_root": {
+      "ctime": 1782735197,
+      "hash": "cdefe059f3e56d904e69acdbf3d9ebe0732a0c8846070a35af1660b8ede30652e7e6dac9d13d501058044397f6fda8fb6811cb89a6cfd78f595dc90b794343c4",
+      "hash_meta": "71d6e4f8df133928ec9852a99767a463d2de36fd693866715bf999213097b411",
+      "seqno": 27653761
+    },
+    "service": {
+      "entropy": "hEeh7Bsb6p6aNYwQVVfTL+5I",
+      "hostname": "belloworld.it",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "6.6.3"
+  },
+  "ctime": 1782735301,
+  "expire_in": 504576000,
+  "prev": "0b2c18eb956ef939e411c5ea127cc0ec4e46f9915deeccc9e1901ad4ea41636d",
+  "seqno": 67,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEg3wPjn8vDAv210cbqjX3SlG7s7/KIdEaVEvBgz+bTub0Kp3BheWxvYWTESpcCQ8QgCywY65Vu+TnkEcXqEnzA7E5G+ZFd7szJ4ZAa1OpBY23EIIWkVCUdCUKHMrwrNPPCZL/Fs73OMOWG9NnFQnu09gnHAgHCo3NpZ8RAGdirN7CBzSuh1EPD5RQfU2mwhYULxGEhMMevAOXd/1UBSNL0DKm+Gl3Ql/2+qpLqiwGx16tWiwok5BK9Ac4pCqhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIDzxGTrxkMo6rFxa3FbN5V4N6qd8AaOQCTLdvj5q/cRoo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/drizzt
+
+==================================================================
