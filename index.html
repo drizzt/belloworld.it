@@ -1,0 +1,15 @@
+<!doctype html><html lang=it><head><meta charset=utf-8><meta content="width=device-width,initial-scale=1" name=viewport><title>Bello, World</title><meta content="Il computer è tuo, anche il software può esserlo. Informatica spiegata a chi non è del mestiere." name=description><link href=https://belloworld.it/belli/ rel=canonical><meta content="noindex, follow" name=robots><meta content="Bello, World" property=og:site_name><meta content=it_IT property=og:locale><meta content=website property=og:type><meta content=https://belloworld.it/belli/ property=og:url><meta content="Bello, World" property=og:title><meta content="Il computer è tuo, anche il software può esserlo. Informatica spiegata a chi non è del mestiere." property=og:description><meta content=https://belloworld.it/img/belli-og.png property=og:image><meta content="Bello, World  Il computer è tuo, anche il software può esserlo." property=og:image:alt><meta content=1080 property=og:image:width><meta content=1080 property=og:image:height><link as=font crossorigin href=https://belloworld.it/fonts/ibm-plex-sans-condensed-latin-700-normal.woff2 rel=preload type=font/woff2><link href=https://belloworld.it/belli.css rel=stylesheet><body class=home><div class=home-frame><video aria-label="Un terminale scrive una riga di codice, la cancella e resta scritto bello, world" class=home-video controls height=1080 playsinline poster=https://belloworld.it/bello.poster.webp preload=metadata width=1440><source type='video/mp4; codecs="av01.0.09M.08"' src=https://belloworld.it/bello.av1.mp4> <source type='video/mp4; codecs="avc1.640032"' src=https://belloworld.it/bello.h264.mp4></video><button class=home-play hidden type=button>Guarda</button></div><p class=home-below><a href=https://belloworld.it/belli/>Entra</a></p><script>(function () {
+      var video = document.querySelector('.home-video');
+      var play = document.querySelector('.home-play');
+      function enter() { location.replace(document.querySelector('.home-below a').href); }
+      video.addEventListener('ended', enter);
+      video.addEventListener('error', enter);
+      play.addEventListener('click', function () {
+        play.hidden = true;
+        video.play().catch(function () {
+          video.controls = true;
+        });
+      });
+      video.controls = false;
+      play.hidden = false;
+    })();</script>
